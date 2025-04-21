@@ -4,7 +4,7 @@ version: 0.0.1
 homepage: https://github.com/shop100global/100pay_hq_flutter_wrapper
 repository: https://github.com/shop100global/100pay_hq_flutter_wrapper
 issue_tracker: https://github.com/shop100global/100pay_hq_flutter_wrapper/issues
-publish_to: 100pay.co
+publish_to: https://pub.dev
 
 environment:
   sdk: ^3.7.2
