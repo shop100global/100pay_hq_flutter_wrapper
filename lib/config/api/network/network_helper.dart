@@ -8,10 +8,6 @@ import 'network.dart';
 class NetworkHelper {
   const NetworkHelper._();
 
-  static bool _isValidResponse(json) {
-    return json != null;
-  }
-
   static Future<R> filterResponse<R>({
     required NetworkCallBack callBack,
     required http.Response? response,
@@ -29,9 +25,7 @@ class NetworkHelper {
       return callBack('');
     }
     if (response.body.isEmpty || response.statusCode == 404) {
-      final decorator = {
-        'message': response.body,
-      };
+      final decorator = {'message': response.body};
       return onFailureCallBackWithMessage(
         NetworkResponseErrorType.badRequest,
         decorator['message'] ?? 'Invalid request.',
@@ -39,33 +33,30 @@ class NetworkHelper {
       // callBack(response.body);
     }
     if (response.body.isEmpty && response.statusCode == 500) {
-      final decorator = {
-        'message': response.body,
-      };
-      return onFailureCallBackWithMessage(NetworkResponseErrorType.serverError,
-          decorator['message'] ?? 'Server error. Try later.');
+      final decorator = {'message': response.body};
+      return onFailureCallBackWithMessage(
+        NetworkResponseErrorType.serverError,
+        decorator['message'] ?? 'Server error. Try later.',
+      );
     }
     if (response.body.isEmpty && response.statusCode == 502) {
-      final decorator = {
-        'message': response.body,
-      };
-      return onFailureCallBackWithMessage(NetworkResponseErrorType.badGateway,
-          decorator['message'] ?? 'Server unreachable.');
+      final decorator = {'message': response.body};
+      return onFailureCallBackWithMessage(
+        NetworkResponseErrorType.badGateway,
+        decorator['message'] ?? 'Server unreachable.',
+      );
     }
 
     if (response.body.isEmpty && response.statusCode == 503) {
-      final decorator = {
-        'message': response.body,
-      };
+      final decorator = {'message': response.body};
       return onFailureCallBackWithMessage(
-          NetworkResponseErrorType.serviceUnavailable,
-          decorator['message'] ?? 'Service Unavailable');
+        NetworkResponseErrorType.serviceUnavailable,
+        decorator['message'] ?? 'Service Unavailable',
+      );
     }
 
     if (response.body.isEmpty && response.statusCode == 413) {
-      final decorator = {
-        'message': response.body,
-      };
+      final decorator = {'message': response.body};
       return onFailureCallBackWithMessage(
         NetworkResponseErrorType.serviceUnavailable,
         decorator['message'] ?? 'Your request is too large',
@@ -176,9 +167,7 @@ class NetworkHelper {
       return callBack('');
     }
     if (responseBody.body.isEmpty && response.statusCode == 404) {
-      final decorator = {
-        'message': responseBody.body,
-      };
+      final decorator = {'message': responseBody.body};
       return onFailureCallBackWithMessage(
         NetworkResponseErrorType.badRequest,
         decorator['message'] ?? 'Invalid request.',
@@ -186,33 +175,30 @@ class NetworkHelper {
       // callBack(response.body);
     }
     if (responseBody.body.isEmpty && response.statusCode == 500) {
-      final decorator = {
-        'message': responseBody.body,
-      };
-      return onFailureCallBackWithMessage(NetworkResponseErrorType.serverError,
-          decorator['message'] ?? 'Server error. Try later.');
+      final decorator = {'message': responseBody.body};
+      return onFailureCallBackWithMessage(
+        NetworkResponseErrorType.serverError,
+        decorator['message'] ?? 'Server error. Try later.',
+      );
     }
     if (responseBody.body.isEmpty && response.statusCode == 502) {
-      final decorator = {
-        'message': responseBody.body,
-      };
-      return onFailureCallBackWithMessage(NetworkResponseErrorType.badGateway,
-          decorator['message'] ?? 'Server unreachable.');
+      final decorator = {'message': responseBody.body};
+      return onFailureCallBackWithMessage(
+        NetworkResponseErrorType.badGateway,
+        decorator['message'] ?? 'Server unreachable.',
+      );
     }
 
     if (responseBody.body.isEmpty && response.statusCode == 503) {
-      final decorator = {
-        'message': responseBody.body,
-      };
+      final decorator = {'message': responseBody.body};
       return onFailureCallBackWithMessage(
-          NetworkResponseErrorType.serviceUnavailable,
-          decorator['message'] ?? 'Service Unavailable');
+        NetworkResponseErrorType.serviceUnavailable,
+        decorator['message'] ?? 'Service Unavailable',
+      );
     }
 
     if (responseBody.body.isEmpty && response.statusCode == 413) {
-      final decorator = {
-        'message': responseBody.body,
-      };
+      final decorator = {'message': responseBody.body};
       return onFailureCallBackWithMessage(
         NetworkResponseErrorType.serviceUnavailable,
         decorator['message'] ?? 'Your request is too large',
